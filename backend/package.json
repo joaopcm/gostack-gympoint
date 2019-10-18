@@ -8,11 +8,15 @@
     "build": "sucrase ./src -d ./dist --transforms imports"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^7.12.1",
     "sequelize": "^5.9.4",
-    "youch": "^2.0.10"
+    "youch": "^2.0.10",
+    "yup": "^0.27.0"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
