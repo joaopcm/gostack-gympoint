@@ -5,6 +5,8 @@ import StudentController from './app/controllers/StudentController';
 import PlanController from './app/controllers/PlanController';
 import EnrollmentController from './app/controllers/EnrollmentController';
 import CheckinController from './app/controllers/CheckinController';
+import HelpOrderController from './app/controllers/HelpOrderController';
+import StudentHelpOrderController from './app/controllers/StudentHelpOrderController';
 
 import authMiddleware from './app/middlewares/auth';
 import checkStudentMiddleware from './app/middlewares/checkStudent';
@@ -12,6 +14,7 @@ import checkPlanMiddleware from './app/middlewares/checkPlan';
 import checkEnrollmentMiddleware from './app/middlewares/checkEnrollment';
 import checkEnrollmentPlanMiddleware from './app/middlewares/checkEnrollmentPlan';
 import checkEnrollmentStudentMiddleware from './app/middlewares/checkEnrollmentStudent';
+import checkHelpOrderMiddleware from './app/middlewares/checkHelpOrder';
 
 const routes = new Router();
 
@@ -26,6 +29,17 @@ routes.post(
   '/students/:id/checkins',
   checkStudentMiddleware,
   CheckinController.store
+);
+
+routes.get(
+  '/students/:id/help-orders',
+  checkStudentMiddleware,
+  StudentHelpOrderController.index
+);
+routes.post(
+  '/students/:id/help-orders',
+  checkStudentMiddleware,
+  StudentHelpOrderController.store
 );
 
 routes.use(authMiddleware);
@@ -63,6 +77,13 @@ routes.delete(
   '/enrollments/:id',
   checkEnrollmentMiddleware,
   EnrollmentController.delete
+);
+
+routes.get('/help-orders', HelpOrderController.index);
+routes.post(
+  '/help-orders/:id/answer',
+  checkHelpOrderMiddleware,
+  HelpOrderController.store
 );
 
 export default routes;

@@ -57,8 +57,8 @@ class PlanController {
       }
     }
 
-    plan.update({ title, duration, price });
-    plan.save();
+    await plan.update({ title, duration, price });
+    await plan.save();
 
     return res.json(plan);
   }

@@ -113,8 +113,14 @@ class EnrollmentController {
       end_date = addMonths(parseISO(start_date), plan.duration);
     }
 
-    enrollment.update({ student_id, plan_id, start_date, end_date, price });
-    enrollment.save();
+    await enrollment.update({
+      student_id,
+      plan_id,
+      start_date,
+      end_date,
+      price,
+    });
+    await enrollment.save();
 
     return res.json(enrollment);
   }

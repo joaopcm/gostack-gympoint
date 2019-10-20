@@ -1,0 +1,20 @@
+<p>
+  Olá, <strong>{{{ student }}}</strong>!
+</p>
+
+<p>O seu pedido de auxílio foi respondido! Dê uma olhada nas informações abaixo:</p>
+
+<div style="padding: 30px; font-size: 12px; color: #666;">
+  [{{ student }}]: {{ question }}
+  <br>
+  <small>
+    Enviado {{ created_at }}
+  </small>
+  <div style="margin: 30px; color: #7159c1; font-weight: bold;">
+    [GymPoint]: {{ answer }}
+    <br>
+    <small>
+      Respondido {{ answer_at }}
+    </small>
+  </div>
+</div>

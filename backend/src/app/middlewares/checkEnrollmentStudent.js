@@ -4,7 +4,7 @@ import Student from '../models/Student';
 
 export default async (req, res, next) => {
   const schema = Yup.object().shape({
-    student_id: Yup.string().required(),
+    student_id: Yup.number().required(),
   });
 
   if (!(await schema.isValid(req.body))) {

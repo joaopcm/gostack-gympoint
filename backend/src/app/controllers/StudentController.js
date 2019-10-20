@@ -87,8 +87,8 @@ class StudentController {
       }
     }
 
-    student.update({ name, email, birth, weight, height });
-    student.save();
+    await student.update({ name, email, birth, weight, height });
+    await student.save();
 
     return res.json(student);
   }
