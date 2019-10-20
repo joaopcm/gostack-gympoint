@@ -1,6 +1,5 @@
 import Sequelize, { Model } from 'sequelize';
-import { formatDistanceStrict } from 'date-fns';
-import pt from 'date-fns/locale/pt';
+import { differenceInCalendarDays } from 'date-fns';
 
 class Student extends Model {
   static init(sequelize) {
@@ -12,9 +11,7 @@ class Student extends Model {
         age: {
           type: Sequelize.VIRTUAL,
           get() {
-            return formatDistanceStrict(this.birth, new Date(), {
-              locale: pt,
-            });
+            return this.calculateAge();
           },
         },
         weight: Sequelize.DECIMAL,
@@ -24,6 +21,13 @@ class Student extends Model {
     );
 
     return this;
+  }
+
+  calculateAge() {
+    const age = Math.floor(
+      differenceInCalendarDays(new Date(), this.birth) / 365.25
+    );
+    return `${age} anos`;
   }
 }
 
