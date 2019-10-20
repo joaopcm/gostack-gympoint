@@ -1,8 +1,9 @@
-import { subDays } from 'date-fns';
+import { subDays, isAfter } from 'date-fns';
 import { Op } from 'sequelize';
 
 import Checkin from '../models/Checkin';
 import Student from '../models/Student';
+import Enrollment from '../models/Enrollment';
 
 class CheckinController {
   async index(req, res) {
@@ -26,6 +27,17 @@ class CheckinController {
 
   async store(req, res) {
     const { id } = req.params;
+
+    // Check if the student is able to enter gym
+    const isStudentAble = await Enrollment.findOne({
+      where: { student_id: id },
+    });
+
+    if (!isStudentAble || !isAfter(isStudentAble.end_date, new Date())) {
+      return res
+        .status(401)
+        .json({ error: 'Your enrollment is not able to join the gym' });
+    }
 
     const checkins = await Checkin.findAll({
       where: {
