@@ -21,7 +21,7 @@
     "nodemailer": "^6.3.1",
     "nodemailer-express-handlebars": "^3.1.0",
     "pg": "^7.12.1",
-    "sequelize": "^5.9.4",
+    "sequelize": "^5.15.1",
     "youch": "^2.0.10",
     "yup": "^0.27.0"
   },
