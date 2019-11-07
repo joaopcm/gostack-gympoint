@@ -3,10 +3,8 @@
 </h1>
 
 <h3 align="center">
-  Bootcamp application
+  Rocketseat bootcamp project. The project is a back-end, web and mobile system for control and interaction between gyms and their students. It has features like login, enrollment, training, plans, payments, aid applications, etc.
 </h3>
-
-<blockquote align="center">“Faça seu melhor, mas sempre com prazo de entrega”!</blockquote>
 
 <p align="center">
   <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/jopcmelo/gostack-gympoint?color=%2304D361">
@@ -18,69 +16,100 @@
   </a>
 </p>
 
-## Overview
+## Getting Started
 
-This is a repository made in bootcamp gostack of [Rocketseat](http://rocketseat.com.br).
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-This is an application ...
+### Prerequisites
+- [NodeJS](https://nodejs.org/en/) - Environment runtime
+- [Yarn](https://yarnpkg.com/en/docs/install) - Packager manager
+- [Docker](https://docs.docker.com/install/) - Make it easier to create, deploy, and run applications by using containers
+- [Docker Compose](https://docs.docker.com/compose/install/) - Relies on Docker Engine for any meaningful work, so make sure you have Docker Engine installed either locally or remote, depending on your setup.
 
-## Preparing and running application
+What things you need to install the software and how to install them
 
-> Cloning repository:
-
-```shell
-  ~ git clone https://github.com/jopcmelo/gostack-gympoint.git
-  ~ cd gostack-gympoint/backend
+```
+$> git clone https://github.com/jopcmelo/gostack-gympoint.git
 ```
 
-> Installing dependencies:
+### Installing
 
-```shell
-  ~ yarn install
-  or
-  ~ npm install
+A step by step series of examples that tell you how to get a development env running
+
+#### Databases
+First thing you must do is setup all your database settings. To do it, I have created a docker-compose.yml file do help you
+```
+$> docker-compose up -d
 ```
 
-> Setting up database
-
-To the database you need to have a SQL database remote or localy. All sensible configs should be setted in environment as `environments variables`.
-
-To make this localy, just create a .env file in root of application and put the values like the template `.env.example` file with the values that you want.
-
-```shell
-DB_HOST=localhost
-DB_USER=postgres
-DB_PASS=gympoint
-DB_NAME=gympoint
+#### Back-end
+First install back-end dependencies
+```
+$> cd ./backend/ && yarn
+```
+Start back-end service
+```
+$> yarn dev 
 ```
 
-> Preparing database
-
-To prepare the database, you need to use Sequelize CLI, so to create and prepare database to use, just run:
-
-```shell
-  ~ yarn sequelize db:create
-  ~ yarn sequelize db:migrate
-  ~ yarn sequelize db:seed:all
+#### Front-end
+First install front-end dependencies
+```
+$> cd ./frontend/ && yarn
+```
+Then run app
+```
+$> yarn start
 ```
 
-If database already exists, just run the bellow command to delete it.
+#### Mobile
+> Mobile version is comming soon...
 
-```shell
-  ~ yarn sequelize db:drop
-```
+## Built With
 
-> Using Docker and Docker Compose
+* [Express](http://www.dropwizard.io/1.0.2/docs/) - The restful API framework
+* [ReactJS](https://pt-br.reactjs.org/) - A front-end library to build user interfaces
+* [React Native](https://facebook.github.io/react-native/) - A mobile library to build native apps to Android and iOS
 
-You can set your database with Docker and Docker Compose, using the follow commands:
+## Contributing
 
-```shell
-  ~ cd ..
-  ~ docker-compose up -d
-```
+Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
 
-## Documentation
+## Authors
 
-There is a file called `insomnia.json` in ./backend/ of this repository, that is the exported documentation of [insomnia](https://insomnia.rest/).
+* **João Melo** - *Full-stack developer* - [GitHub profile](https://github.com/jopcmelo)
 
-Insomnia is a software similar to postman, you use that to test the requests to your application server side, seeing the response for each route with it params.
+See also the list of [contributors](https://github.com/jopcmelo/gostack-gobarber/contributors) who participated in this project.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
+* ExpressJS ecossystem
+* MVC design pattern
+* Sequelize ORM
+* Background mail sendling with Redis
+* Sentry
+* Multer
+* JWT
+* Docker
+* React ecossystem
+* React Hooks
+* ReactJS
+* React Native
+* Reactotron
+* React Navigation / React Router DOM
+* React Toastify
+* Redux
+* Redux Saga
+* Redux Persist
+* Flux Archtecture
+* ESLint
+* Prettier
+* Styled Components
+* Unform
+* Axios
+* History
+* Etc
