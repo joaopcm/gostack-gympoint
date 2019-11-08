@@ -13,7 +13,7 @@ export default async (req, res, next) => {
   const [bearer, token] = authHeader.split(' ');
 
   if (bearer !== 'Bearer') {
-    return response.status(401).json({ error: 'Token malformed' });
+    return res.status(401).json({ error: 'Token malformed' });
   }
 
   try {
