@@ -1,15 +1,17 @@
 import * as Yup from 'yup';
 import { isAfter, parseISO } from 'date-fns';
+import { Op } from 'sequelize';
 
 import Student from '../models/Student';
 
 class StudentController {
   async index(req, res) {
-    const { page = 1, quantity = 20 } = req.query;
+    const { page = 1, quantity = 20, q: query } = req.query;
 
     const students = await Student.findAll({
       limit: quantity,
       offset: (page - 1) * quantity,
+      where: { name: { [Op.substring]: query } },
     });
 
     return res.json(students);
