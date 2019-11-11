@@ -4,7 +4,7 @@ import Plan from '../models/Plan';
 
 class PlanController {
   async index(req, res) {
-    const { page = 1, quantity = 20 } = req.params;
+    const { page = 1, quantity = 20 } = req.query;
 
     const plans = await Plan.findAll({
       limit: quantity,

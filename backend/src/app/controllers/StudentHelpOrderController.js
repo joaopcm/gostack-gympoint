@@ -6,7 +6,7 @@ import Enrollment from '../models/Enrollment';
 
 class StudentHelpOrderController {
   async index(req, res) {
-    const { page = 1, quantity = 20 } = req.params;
+    const { page = 1, quantity = 20 } = req.query;
 
     const { id } = req.params;
 

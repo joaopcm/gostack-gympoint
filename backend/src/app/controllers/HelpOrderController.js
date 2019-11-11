@@ -8,7 +8,7 @@ import Queue from '../../lib/Queue';
 
 class HelpOrderController {
   async index(req, res) {
-    const { page = 1, quantity = 20 } = req.params;
+    const { page = 1, quantity = 20 } = req.query;
 
     const helpOrders = await HelpOrder.findAll({
       where: { answer: null },

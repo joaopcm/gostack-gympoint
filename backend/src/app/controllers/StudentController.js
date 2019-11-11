@@ -5,7 +5,7 @@ import Student from '../models/Student';
 
 class StudentController {
   async index(req, res) {
-    const { page = 1, quantity = 20 } = req.params;
+    const { page = 1, quantity = 20 } = req.query;
 
     const students = await Student.findAll({
       limit: quantity,
