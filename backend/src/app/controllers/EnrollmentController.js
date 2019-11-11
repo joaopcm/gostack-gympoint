@@ -7,11 +7,12 @@ import Plan from '../models/Plan';
 
 class EnrollmentController {
   async index(req, res) {
-    const { page = 1, quantity = 20 } = req.params;
+    const { page = 1, quantity = 20 } = req.query;
 
     const enrollments = await Enrollment.findAll({
       limit: quantity,
       offset: (page - 1) * quantity,
+      attributes: ['id', 'start_date', 'end_date', 'price', 'active'],
       include: [
         {
           model: Student,
