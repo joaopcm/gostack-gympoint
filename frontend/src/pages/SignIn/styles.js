@@ -41,9 +41,18 @@ export const Card = styled.div`
       &::placeholder {
         color: ${colors.grey};
         height: 19px;
+        margin: 0 0 10px;
         font-size: 16px;
         line-height: 19px;
       }
+    }
+
+    span {
+      margin-top: -18px;
+      margin-bottom: 10px;
+      color: ${colors.primary};
+      align-self: flex-start;
+      font-weight: bold;
     }
 
     button {
