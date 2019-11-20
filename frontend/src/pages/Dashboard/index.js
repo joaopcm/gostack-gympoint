@@ -2,6 +2,6 @@ import React from 'react';
 
 // import { Container } from './styles';
 
-export default function PlansList() {
-  return <h1>Plans List</h1>;
+export default function Dashboard() {
+  return <h1>Dashboard</h1>;
 }

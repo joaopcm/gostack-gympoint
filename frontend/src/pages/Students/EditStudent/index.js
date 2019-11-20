@@ -3,5 +3,5 @@ import React from 'react';
 // import { Container } from './styles';
 
 export default function EditStudent() {
-  return <div />;
+  return <h1>Edit Student</h1>;
 }

@@ -3,5 +3,5 @@ import React from 'react';
 // import { Container } from './styles';
 
 export default function HelpOrdersList() {
-  return <div />;
+  return <h1>Help Orders List</h1>;
 }
