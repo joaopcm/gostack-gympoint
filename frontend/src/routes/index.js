@@ -3,24 +3,24 @@ import { Switch } from 'react-router-dom';
 
 import Route from './Route';
 
-import Dashboard from '../pages/Dashboard';
+import Dashboard from '~/pages/Dashboard';
 
-import CreateEnrollment from '../pages/Enrollments/CreateEnrollment';
-import EditEnrollment from '../pages/Enrollments/EditEnrollment';
-import EnrollmentsList from '../pages/Enrollments/EnrollmentsList';
+import CreateEnrollment from '~/pages/Enrollments/CreateEnrollment';
+import EditEnrollment from '~/pages/Enrollments/EditEnrollment';
+import EnrollmentsList from '~/pages/Enrollments/EnrollmentsList';
 
-import AnswerHelpOrder from '../pages/HelpOrders/AnswerHelpOrder';
-import HelpOrdersList from '../pages/HelpOrders/HelpOrdersList';
+import AnswerHelpOrder from '~/pages/HelpOrders/AnswerHelpOrder';
+import HelpOrdersList from '~/pages/HelpOrders/HelpOrdersList';
 
-import CreatePlan from '../pages/Plans/CreatePlan';
-import EditPlan from '../pages/Plans/EditPlan';
-import PlansList from '../pages/Plans/PlansList';
+import CreatePlan from '~/pages/Plans/CreatePlan';
+import EditPlan from '~/pages/Plans/EditPlan';
+import PlansList from '~/pages/Plans/PlansList';
 
-import SignIn from '../pages/SignIn';
+import SignIn from '~/pages/SignIn';
 
-import CreateStudent from '../pages/Students/CreateStudent';
-import EditStudent from '../pages/Students/EditStudent';
-import StudentsList from '../pages/Students/StudentsList';
+import CreateStudent from '~/pages/Students/CreateStudent';
+import EditStudent from '~/pages/Students/EditStudent';
+import StudentsList from '~/pages/Students/StudentsList';
 
 export default function Routes() {
   return (
