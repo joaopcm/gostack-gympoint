@@ -26,23 +26,23 @@ export const Card = styled.div`
       color: ${colors.dark};
       font-size: 14px;
       line-height: 16px;
+    }
 
-      input {
-        margin-top: 8px;
-        margin-bottom: 20px;
-        border: 2px solid ${colors.grey};
-        border-radius: 4px;
-        height: 45px;
-        padding: 0 15px;
-        color: ${colors.dark};
-        width: 100%;
+    input {
+      margin-top: 8px;
+      margin-bottom: 20px;
+      border: 2px solid ${colors.grey};
+      border-radius: 4px;
+      height: 45px;
+      padding: 0 15px;
+      color: ${colors.dark};
+      width: 100%;
 
-        &::placeholder {
-          color: ${colors.grey};
-          height: 19px;
-          font-size: 16px;
-          line-height: 19px;
-        }
+      &::placeholder {
+        color: ${colors.grey};
+        height: 19px;
+        font-size: 16px;
+        line-height: 19px;
       }
     }
 
