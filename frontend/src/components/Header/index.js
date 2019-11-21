@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import { Container, Content, Profile } from './styles';
 
@@ -14,19 +14,19 @@ export default function Header() {
 
           <ul>
             <li>
-              <Link to="/dashboard">DASHBOARD</Link>
+              <NavLink to="/dashboard">DASHBOARD</NavLink>
             </li>
             <li>
-              <Link to="/students">ALUNOS</Link>
+              <NavLink to="/students">ALUNOS</NavLink>
             </li>
             <li>
-              <Link to="/plans">PLANOS</Link>
+              <NavLink to="/plans">PLANOS</NavLink>
             </li>
             <li>
-              <Link to="/enrollments">MATRÍCULAS</Link>
+              <NavLink to="/enrollments">MATRÍCULAS</NavLink>
             </li>
             <li>
-              <Link to="/help-orders">PEDIDOS DE AUXÍLIO</Link>
+              <NavLink to="/help-orders">PEDIDOS DE AUXÍLIO</NavLink>
             </li>
           </ul>
         </nav>
@@ -35,7 +35,7 @@ export default function Header() {
           <Profile>
             <div>
               <strong>João Melo</strong>
-              <a href>Sair do sistema</a>
+              <a href="/">Sair do sistema</a>
             </div>
           </Profile>
         </aside>

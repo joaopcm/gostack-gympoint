@@ -18,14 +18,28 @@ export const Content = styled.div`
     align-items: center;
 
     img {
-      margin-right: 20px;
-      padding-right: 20px;
+      margin-right: 30px;
+      padding-right: 30px;
       border-right: 1px solid ${colors.grey};
     }
 
+    ul li {
+      display: inline;
+
+      & + li {
+        margin-left: 20px;
+      }
+    }
+
     a {
+      font-size: 15px;
+      line-height: 19px;
       font-weight: bold;
-      color: ${colors.primary};
+      color: ${colors.darkGrey};
+    }
+
+    a.active {
+      color: ${colors.dark};
     }
   }
 
