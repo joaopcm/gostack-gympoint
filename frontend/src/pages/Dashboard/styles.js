@@ -18,7 +18,6 @@ export const Card = styled.div`
   padding: 20px;
   justify-content: space-between;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
 
   &:hover {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
