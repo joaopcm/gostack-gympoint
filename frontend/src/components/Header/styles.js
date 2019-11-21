@@ -42,18 +42,10 @@ export const Content = styled.div`
       color: ${colors.dark};
     }
   }
-
-  aside {
-    display: flex;
-    align-items: center;
-  }
 `;
 
 export const Profile = styled.div`
   display: flex;
-  margin-left: 20px;
-  padding-left: 20px;
-  border-left: 1px solid ${colors.grey};
 
   div {
     text-align: right;
@@ -67,7 +59,9 @@ export const Profile = styled.div`
       color: ${colors.dark};
     }
 
-    a {
+    button {
+      background: transparent;
+      border: 0;
       display: block;
       margin-top: 2px;
       font-size: 14px;
