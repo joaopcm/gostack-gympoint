@@ -2,6 +2,8 @@ import { createGlobalStyle } from 'styled-components';
 
 import 'react-toastify/dist/ReactToastify.css';
 
+import colors from './colors';
+
 export default createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
 
@@ -38,5 +40,13 @@ export default createGlobalStyle`
 
   button {
     cursor: pointer;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: ${colors.dark};
+  }
+
+  p, span {
+    color: ${colors.darkGrey};
   }
 `;
