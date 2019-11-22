@@ -60,6 +60,10 @@ export default function Dashboard() {
   ]);
 
   useEffect(() => {
+    document.title = 'GymPoint - Dashboard';
+  }, []);
+
+  useEffect(() => {
     async function loadValues() {
       try {
         setLoading(true);
