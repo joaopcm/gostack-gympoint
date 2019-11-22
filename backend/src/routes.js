@@ -7,6 +7,7 @@ import EnrollmentController from './app/controllers/EnrollmentController';
 import CheckinController from './app/controllers/CheckinController';
 import HelpOrderController from './app/controllers/HelpOrderController';
 import StudentHelpOrderController from './app/controllers/StudentHelpOrderController';
+import DashboardController from './app/controllers/DashboardController';
 
 import authMiddleware from './app/middlewares/auth';
 import checkStudentMiddleware from './app/middlewares/checkStudent';
@@ -43,6 +44,8 @@ routes.post(
 );
 
 routes.use(authMiddleware);
+
+routes.get('/dashboard', DashboardController.index);
 
 routes.get('/students', StudentController.index);
 routes.get('/students/:id', checkStudentMiddleware, StudentController.show);

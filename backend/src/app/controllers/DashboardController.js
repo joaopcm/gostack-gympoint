@@ -7,15 +7,15 @@ import HelpOrder from '../models/HelpOrder';
 
 class DashboardController {
   async index(req, res) {
-    const students = Student.count();
+    const students = await Student.count();
 
-    const plans = Plan.count();
+    const plans = await Plan.count();
 
-    const enrollments = Enrollment.count({
+    const enrollments = await Enrollment.count({
       where: { end_date: { [Op.gte]: new Date() } },
     });
 
-    const helpOrders = HelpOrder.count({
+    const helpOrders = await HelpOrder.count({
       where: { answer_at: null },
     });
 
