@@ -8,5 +8,8 @@ export default function ContainerWrapper({ children }) {
 }
 
 ContainerWrapper.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
 };
