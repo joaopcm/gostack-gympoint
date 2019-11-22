@@ -30,7 +30,7 @@ export default function Dashboard() {
       alias: 'Alunos',
       description: 'alunos ativos',
       icon: MdPeople,
-      value: values.students,
+      value: 'students',
       to: '/students',
     },
     {
@@ -38,7 +38,7 @@ export default function Dashboard() {
       alias: 'Planos',
       description: 'planos ativos',
       icon: MdStars,
-      value: values.plans,
+      value: 'plans',
       to: '/plans',
     },
     {
@@ -46,7 +46,7 @@ export default function Dashboard() {
       alias: 'Matrículas',
       description: 'matrículas ativas',
       icon: MdCreditCard,
-      value: values.enrollments,
+      value: 'enrollments',
       to: '/enrollments',
     },
     {
@@ -54,7 +54,7 @@ export default function Dashboard() {
       alias: 'Pedidos',
       description: 'pedidos pendentes',
       icon: MdHelp,
-      value: values.helpOrders,
+      value: 'helpOrders',
       to: '/help-orders',
     },
   ]);
@@ -66,9 +66,9 @@ export default function Dashboard() {
 
         const response = await api.get('dashboard');
 
-        const { students, pĺans, enrollments, helpOrders } = response.data;
+        const { students, plans, enrollments, helpOrders } = response.data;
 
-        setValues({ students, pĺans, enrollments, helpOrders });
+        setValues({ students, plans, enrollments, helpOrders });
       } catch (error) {
         toast.error('Não foi possível carregar as informações do dashboard.');
       }
@@ -85,9 +85,11 @@ export default function Dashboard() {
       <Content>
         {cards.map(card =>
           loading ? (
-            <LoadingContainer>
+            <LoadingContainer key={card.name}>
               <Shimmer>
                 <LoadingCircle />
+              </Shimmer>
+              <Shimmer>
                 <LoadingLine />
               </Shimmer>
             </LoadingContainer>
@@ -99,7 +101,7 @@ export default function Dashboard() {
                   <h1>{card.alias}</h1>
                 </div>
                 <div className="value">
-                  <h1>{card.value}</h1>
+                  <h1>{values[card.value]}</h1>
                   <span>{card.description}</span>
                 </div>
               </Card>
