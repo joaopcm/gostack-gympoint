@@ -13,6 +13,7 @@ export const Content = styled.div`
 `;
 
 export const Card = styled.div`
+  border-radius: 4px;
   display: flex;
   background: ${colors.white};
   padding: 20px;
