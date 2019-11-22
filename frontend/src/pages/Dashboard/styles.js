@@ -33,6 +33,8 @@ export const Card = styled.div`
     align-items: center;
 
     svg {
+      font-size: 46px;
+      color: ${colors.white};
       background: ${colors.primary};
       padding: 5px;
       border-radius: 50%;
@@ -57,4 +59,26 @@ export const Card = styled.div`
       color: ${colors.primary};
     }
   }
+`;
+
+export const LoadingCircle = styled.div`
+  height: 46px;
+  width: 46px;
+  border-radius: 50%;
+`;
+
+export const LoadingLine = styled.div`
+  width: 50%;
+  height: 16px;
+  align-self: center;
+  border-radius: 8px;
+`;
+
+export const LoadingContainer = styled.div`
+  border-radius: 4px;
+  background-color: ${colors.white};
+  display: flex;
+  padding: 20px;
+  justify-content: space-between;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 `;

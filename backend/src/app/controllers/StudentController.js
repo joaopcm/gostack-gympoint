@@ -11,7 +11,7 @@ class StudentController {
     const students = await Student.findAll({
       limit: quantity,
       offset: (page - 1) * quantity,
-      where: { name: { [Op.substring]: query } },
+      where: query ? { name: { [Op.substring]: query } } : null,
     });
 
     return res.json(students);
