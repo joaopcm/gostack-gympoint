@@ -2,6 +2,7 @@ import React from 'react';
 import { MdAdd } from 'react-icons/md';
 
 import Button from '~/components/Button';
+import TextInput from '~/components/TextInput';
 import Container from '~/components/Container';
 import { Title } from './styles';
 
@@ -10,12 +11,14 @@ export default function StudentsList() {
     <Container>
       <Title>
         <h1>Lista de alunos</h1>
-        <Button icon={MdAdd} type="button" text="Cadastrar aluno" />
 
         <div>
-          {/* <button type="button">Cadastrar</button> */}
-          <Button icon={MdAdd} type="button" text="Cadastrar aluno" />
-          <input type="text" />
+          <Button icon={MdAdd} type="button" text="CADASTRAR" />
+          <TextInput
+            type="text"
+            name="search"
+            placeholder="Pesquisar por alunos"
+          />
         </div>
       </Title>
       {/* <Content>

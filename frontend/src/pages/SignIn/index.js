@@ -1,12 +1,15 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Form, Input } from '@rocketseat/unform';
+import { Form } from '@rocketseat/unform';
+import { MdSend } from 'react-icons/md';
 import * as Yup from 'yup';
 
 import { signInRequest } from '~/store/modules/auth/actions';
 
 import logo from '~/assets/logo-vertical.svg';
 
+import Button from '~/components/Button';
+import TextInput from '~/components/TextInput';
 import { Card } from './styles';
 
 const schema = Yup.object().shape({
@@ -29,14 +32,14 @@ export default function SignIn() {
       <img src={logo} alt="GymPoint" />
 
       <Form onSubmit={handleSubmit} schema={schema}>
-        <Input
+        <TextInput
           name="email"
           id="email"
           type="email"
           placeholder="exemplo@email.com"
           label="SEU E-MAIL"
         />
-        <Input
+        <TextInput
           name="password"
           id="password"
           type="password"
@@ -44,9 +47,11 @@ export default function SignIn() {
           label="SUA SENHA"
         />
 
-        <button type="submit">
-          {loading ? 'Carregando...' : 'Entrar no sistema'}
-        </button>
+        <Button
+          type="submit"
+          icon={MdSend}
+          text={loading ? 'Carregando...' : 'Entrar no sistema'}
+        />
       </Form>
     </Card>
   );
