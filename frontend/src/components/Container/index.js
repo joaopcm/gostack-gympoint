@@ -1,15 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-import { Container } from './styles';
+const Container = styled.div`
+  margin: 30px 60px;
+  align-self: center;
+`;
 
-export default function ContainerWrapper({ children }) {
-  return <Container>{children}</Container>;
-}
-
-ContainerWrapper.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]).isRequired,
-};
+export default Container;
