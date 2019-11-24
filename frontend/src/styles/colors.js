@@ -7,5 +7,5 @@ export default {
   info: '#4d85ee',
   dark: '#444',
   black: '#000',
-  darkGrey: '#999'
+  darkGrey: '#999',
 };

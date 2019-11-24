@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
 const Container = styled.div`
-  margin: 30px 60px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 30px auto;
   align-self: center;
 `;
 

@@ -7,12 +7,13 @@ import Shimmer from 'react-shimmer-effect';
 import Button from '~/components/Button';
 import TextInput from '~/components/TextInput';
 import Container from '~/components/Container';
-import { Title, Content, Table } from './styles';
+import { Title, Content, Table, LoadingLine, TableFooter } from './styles';
 
 import api from '~/services/api';
 
 export default function StudentsList() {
   const [loading, setLoading] = useState(false);
+  const [page, setPage] = useState(1);
   const [students, setStudents] = useState([]);
 
   useEffect(() => {
@@ -20,18 +21,30 @@ export default function StudentsList() {
       try {
         setLoading(true);
 
-        const response = await api.get('students');
+        const response = await api.get('students', {
+          params: {
+            page,
+          },
+        });
 
         setStudents(response.data);
       } catch (error) {
         toast.error('Não foi possível carregar os alunos');
       }
 
-      // setLoading(false);
+      setLoading(false);
     }
 
     loadStudents();
-  }, []);
+  }, [page]);
+
+  function incrementPage() {
+    setPage(page + 1);
+  }
+
+  function decrementPage() {
+    setPage(page - 1);
+  }
 
   return (
     <Container>
@@ -64,7 +77,17 @@ export default function StudentsList() {
               <tr>
                 <td>
                   <Shimmer>
-                    <span>asdasd</span>
+                    <LoadingLine />
+                  </Shimmer>
+                </td>
+                <td>
+                  <Shimmer>
+                    <LoadingLine />
+                  </Shimmer>
+                </td>
+                <td>
+                  <Shimmer>
+                    <LoadingLine />
                   </Shimmer>
                 </td>
               </tr>
@@ -81,6 +104,23 @@ export default function StudentsList() {
           </tbody>
         </Table>
       </Content>
+      <TableFooter>
+        <button
+          type="button"
+          disabled={page === 1}
+          onClick={() => decrementPage()}
+        >
+          Anterior
+        </button>
+        <span>Página {page}</span>
+        <button
+          type="button"
+          disabled={students.length < 20}
+          onClick={() => incrementPage()}
+        >
+          Próximo
+        </button>
+      </TableFooter>
     </Container>
   );
 }

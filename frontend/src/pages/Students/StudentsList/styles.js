@@ -29,6 +29,12 @@ export const Table = styled.table`
   width: 100%;
   text-align: left;
 
+  tr {
+    color: #666;
+    font-size: 16px;
+    line-height: 20px;
+  }
+
   tr + tr {
     border-top: 1px solid ${colors.secondary};
   }
@@ -36,5 +42,32 @@ export const Table = styled.table`
   td,
   th {
     padding: 16px 0;
+  }
+`;
+
+export const LoadingLine = styled.div`
+  width: 50%;
+  height: 16px;
+  align-self: center;
+  border-radius: 8px;
+`;
+
+export const TableFooter = styled.div`
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    background: ${colors.white};
+    border: 2px solid ${colors.grey};
+    color: ${colors.darkGrey};
+    padding: 10px 15px;
+    border-radius: 4px;
+  }
+
+  span {
+    margin: 0 10px;
   }
 `;
