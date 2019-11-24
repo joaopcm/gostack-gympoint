@@ -3,17 +3,26 @@ import { MdAdd } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Shimmer from 'react-shimmer-effect';
+import { Form } from '@rocketseat/unform';
 
 import Button from '~/components/Button';
 import TextInput from '~/components/TextInput';
 import Container from '~/components/Container';
-import { Title, Content, Table, LoadingLine, TableFooter } from './styles';
+import {
+  Title,
+  Content,
+  Table,
+  LoadingLine,
+  TableFooter,
+  TableFooterButton,
+} from './styles';
 
 import api from '~/services/api';
 
 export default function StudentsList() {
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
+  const [search, setSearch] = useState('');
   const [students, setStudents] = useState([]);
 
   useEffect(() => {
@@ -24,6 +33,7 @@ export default function StudentsList() {
         const response = await api.get('students', {
           params: {
             page,
+            q: search,
           },
         });
 
@@ -36,7 +46,7 @@ export default function StudentsList() {
     }
 
     loadStudents();
-  }, [page]);
+  }, [page, search]);
 
   function incrementPage() {
     setPage(page + 1);
@@ -44,6 +54,10 @@ export default function StudentsList() {
 
   function decrementPage() {
     setPage(page - 1);
+  }
+
+  function handleSearchSubmit(data) {
+    setSearch(data.search);
   }
 
   return (
@@ -55,11 +69,13 @@ export default function StudentsList() {
           <Link to="/students/create">
             <Button icon={MdAdd} type="button" text="CADASTRAR" />
           </Link>
-          <TextInput
-            type="text"
-            name="search"
-            placeholder="Pesquisar por alunos"
-          />
+          <Form onSubmit={handleSearchSubmit}>
+            <TextInput
+              type="text"
+              name="search"
+              placeholder="Pesquisar por alunos"
+            />
+          </Form>
         </div>
       </Title>
       <Content>
@@ -105,21 +121,21 @@ export default function StudentsList() {
         </Table>
       </Content>
       <TableFooter>
-        <button
+        <TableFooterButton
           type="button"
           disabled={page === 1}
           onClick={() => decrementPage()}
         >
           Anterior
-        </button>
+        </TableFooterButton>
         <span>Página {page}</span>
-        <button
+        <TableFooterButton
           type="button"
           disabled={students.length < 20}
           onClick={() => incrementPage()}
         >
           Próximo
-        </button>
+        </TableFooterButton>
       </TableFooter>
     </Container>
   );

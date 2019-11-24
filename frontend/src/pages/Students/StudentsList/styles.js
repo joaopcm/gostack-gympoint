@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import colors from '~/styles/colors';
 
@@ -59,15 +59,23 @@ export const TableFooter = styled.div`
   justify-content: center;
   align-items: center;
 
-  button {
-    background: ${colors.white};
-    border: 2px solid ${colors.grey};
-    color: ${colors.darkGrey};
-    padding: 10px 15px;
-    border-radius: 4px;
-  }
-
   span {
     margin: 0 10px;
+  }
+`;
+
+export const TableFooterButton = styled.button`
+  background: ${colors.white};
+  border: 2px solid ${colors.grey};
+  color: ${colors.darkGrey};
+  padding: 10px 15px;
+  border-radius: 4px;
+
+  &:hover {
+    ${props =>
+      props.disabled &&
+      css`
+        cursor: not-allowed;
+      `}
   }
 `;
