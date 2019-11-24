@@ -1,19 +1,47 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { MdAdd } from 'react-icons/md';
+import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import Shimmer from 'react-shimmer-effect';
 
 import Button from '~/components/Button';
 import TextInput from '~/components/TextInput';
 import Container from '~/components/Container';
-import { Title } from './styles';
+import { Title, Content, Table } from './styles';
+
+import api from '~/services/api';
 
 export default function StudentsList() {
+  const [loading, setLoading] = useState(false);
+  const [students, setStudents] = useState([]);
+
+  useEffect(() => {
+    async function loadStudents() {
+      try {
+        setLoading(true);
+
+        const response = await api.get('students');
+
+        setStudents(response.data);
+      } catch (error) {
+        toast.error('Não foi possível carregar os alunos');
+      }
+
+      // setLoading(false);
+    }
+
+    loadStudents();
+  }, []);
+
   return (
     <Container>
       <Title>
         <h1>Lista de alunos</h1>
 
         <div>
-          <Button icon={MdAdd} type="button" text="CADASTRAR" />
+          <Link to="/students/create">
+            <Button icon={MdAdd} type="button" text="CADASTRAR" />
+          </Link>
           <TextInput
             type="text"
             name="search"
@@ -21,45 +49,38 @@ export default function StudentsList() {
           />
         </div>
       </Title>
-      {/* <Content>
+      <Content>
         <Table>
-          <tr>
-            <th>Company</th>
-            <th>Contact</th>
-            <th>Country</th>
-          </tr>
-          <tr>
-            <td>Alfreds Futterkiste</td>
-            <td>Maria Anders</td>
-            <td>Germany</td>
-          </tr>
-          <tr>
-            <td>Centro comercial Moctezuma</td>
-            <td>Francisco Chang</td>
-            <td>Mexico</td>
-          </tr>
-          <tr>
-            <td>Ernst Handel</td>
-            <td>Roland Mendel</td>
-            <td>Austria</td>
-          </tr>
-          <tr>
-            <td>Island Trading</td>
-            <td>Helen Bennett</td>
-            <td>UK</td>
-          </tr>
-          <tr>
-            <td>Laughing Bacchus Winecellars</td>
-            <td>Yoshi Tannamuri</td>
-            <td>Canada</td>
-          </tr>
-          <tr>
-            <td>Magazzini Alimentari Riuniti</td>
-            <td>Giovanni Rovelli</td>
-            <td>Italy</td>
-          </tr>
+          <thead>
+            <tr>
+              <th>NOME</th>
+              <th>E-MAIL</th>
+              <th>IDADE</th>
+              <th>&nbsp;</th>
+            </tr>
+          </thead>
+          <tbody>
+            {loading ? (
+              <tr>
+                <td>
+                  <Shimmer>
+                    <span>asdasd</span>
+                  </Shimmer>
+                </td>
+              </tr>
+            ) : (
+              students.map(student => (
+                <tr key={student.id}>
+                  <td>{student.name}</td>
+                  <td>{student.email}</td>
+                  <td>{student.age}</td>
+                  <td>editar excluir</td>
+                </tr>
+              ))
+            )}
+          </tbody>
         </Table>
-      </Content> */}
+      </Content>
     </Container>
   );
 }

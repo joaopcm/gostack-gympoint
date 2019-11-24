@@ -17,9 +17,24 @@ export const Title = styled.div`
   }
 `;
 
-export const Content = styled.div``;
-
-export const Table = styled.table`
+export const Content = styled.div`
+  margin-top: 20px;
+  padding: 30px;
   background: ${colors.white};
   border-radius: 4px;
+`;
+
+export const Table = styled.table`
+  border-collapse: collapse;
+  width: 100%;
+  text-align: left;
+
+  tr + tr {
+    border-top: 1px solid ${colors.secondary};
+  }
+
+  td,
+  th {
+    padding: 16px 0;
+  }
 `;
