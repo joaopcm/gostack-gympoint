@@ -15,6 +15,7 @@ import {
   LoadingLine,
   TableFooter,
   TableFooterButton,
+  ActionButton,
 } from './styles';
 
 import api from '~/services/api';
@@ -58,6 +59,18 @@ export default function StudentsList() {
 
   function handleSearchSubmit(data) {
     setSearch(data.search);
+  }
+
+  async function handleDeleteStudent(id) {
+    if (true) {
+      try {
+        await api.delete(`/students/${id}`);
+
+        setStudents(students.filter(student => student.id !== id));
+      } catch (error) {
+        toast.error('Não foi possível excluir este aluno.');
+      }
+    }
   }
 
   return (
@@ -113,7 +126,17 @@ export default function StudentsList() {
                   <td>{student.name}</td>
                   <td>{student.email}</td>
                   <td>{student.age}</td>
-                  <td>editar excluir</td>
+                  <td>
+                    <Link to={`/students/${student.id}`}>
+                      <ActionButton color="info">editar</ActionButton>
+                    </Link>
+                    <ActionButton
+                      color="danger"
+                      onClick={() => handleDeleteStudent(student.id)}
+                    >
+                      excluir
+                    </ActionButton>
+                  </td>
                 </tr>
               ))
             )}

@@ -79,3 +79,13 @@ export const TableFooterButton = styled.button`
       `}
   }
 `;
+
+export const ActionButton = styled.button`
+  color: ${props => colors[props.color]};
+  background: transparent;
+  border: 0;
+
+  &:first-child {
+    margin-right: 20px;
+  }
+`;
