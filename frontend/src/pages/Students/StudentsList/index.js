@@ -1,13 +1,25 @@
 import React from 'react';
+import { MdAdd } from 'react-icons/md';
 
+import Button from '~/components/Button';
 import Container from '~/components/Container';
+import { Title } from './styles';
 
 export default function StudentsList() {
   return (
     <Container>
-      <h1>Lista de alunos</h1>
-      <div>
-        <table>
+      <Title>
+        <h1>Lista de alunos</h1>
+        <Button icon={MdAdd} type="button" text="Cadastrar aluno" />
+
+        <div>
+          {/* <button type="button">Cadastrar</button> */}
+          <Button icon={MdAdd} type="button" text="Cadastrar aluno" />
+          <input type="text" />
+        </div>
+      </Title>
+      {/* <Content>
+        <Table>
           <tr>
             <th>Company</th>
             <th>Contact</th>
@@ -43,8 +55,8 @@ export default function StudentsList() {
             <td>Giovanni Rovelli</td>
             <td>Italy</td>
           </tr>
-        </table>
-      </div>
+        </Table>
+      </Content> */}
     </Container>
   );
 }
