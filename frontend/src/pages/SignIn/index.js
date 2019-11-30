@@ -9,8 +9,7 @@ import { signInRequest } from '~/store/modules/auth/actions';
 import logo from '~/assets/logo-vertical.svg';
 
 import Button from '~/components/Button';
-import TextInput from '~/components/TextInput';
-import { Card } from './styles';
+import { Card, TextInput } from './styles';
 
 const schema = Yup.object().shape({
   email: Yup.string()

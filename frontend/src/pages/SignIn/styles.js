@@ -2,10 +2,11 @@ import styled from 'styled-components';
 
 import colors from '~/styles/colors';
 
+import TextInputWrapper from '~/components/TextInput';
+
 export const Card = styled.div`
   width: 100%;
   max-width: 360px;
-  height: 448px;
   text-align: center;
   background: ${colors.white};
   border-radius: 4px;
@@ -17,8 +18,8 @@ export const Card = styled.div`
     flex-direction: column;
     margin-top: 30px;
   }
+`;
 
-  input {
-    margin-bottom: 20px;
-  }
+export const TextInput = styled(TextInputWrapper)`
+  margin-bottom: 20px;
 `;

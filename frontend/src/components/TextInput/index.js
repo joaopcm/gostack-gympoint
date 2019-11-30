@@ -4,9 +4,15 @@ import { Input } from '@rocketseat/unform';
 
 import { TextInputWrapper } from './styles';
 
-export default function TextInput({ name, type, placeholder, label }) {
+export default function TextInput({
+  name,
+  type,
+  placeholder,
+  label,
+  className,
+}) {
   return (
-    <TextInputWrapper className="text-input-wrapper">
+    <TextInputWrapper className={className}>
       <Input name={name} type={type} placeholder={placeholder} label={label} />
     </TextInputWrapper>
   );
@@ -17,8 +23,10 @@ TextInput.propTypes = {
   type: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
   label: PropTypes.string,
+  className: PropTypes.string,
 };
 
 TextInput.defaultProps = {
   label: null,
+  className: '',
 };

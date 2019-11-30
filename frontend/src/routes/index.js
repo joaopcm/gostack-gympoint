@@ -19,7 +19,6 @@ import PlansList from '~/pages/Plans/PlansList';
 import SignIn from '~/pages/SignIn';
 
 import CreateStudent from '~/pages/Students/CreateStudent';
-import EditStudent from '~/pages/Students/EditStudent';
 import StudentsList from '~/pages/Students/StudentsList';
 
 export default function Routes() {
@@ -45,7 +44,7 @@ export default function Routes() {
       <Route path="/plans" component={PlansList} isPrivate />
 
       <Route path="/students/create" component={CreateStudent} isPrivate />
-      <Route path="/students/:id" component={EditStudent} isPrivate />
+      <Route path="/students/:id" component={CreateStudent} isPrivate />
       <Route path="/students" component={StudentsList} isPrivate />
 
       <Route path="" component={() => <h1>Page not found</h1>} />

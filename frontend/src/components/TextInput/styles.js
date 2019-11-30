@@ -36,8 +36,7 @@ export const TextInputWrapper = styled.div`
   }
 
   span {
-    margin-top: -18px;
-    margin-bottom: 10px;
+    margin-top: 8px;
     color: ${colors.primary};
     align-self: flex-start;
     font-weight: bold;

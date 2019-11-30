@@ -4,7 +4,7 @@ import { darken } from 'polished';
 import colors from '~/styles/colors';
 
 export const ButtonWrapper = styled.button`
-  background: ${colors.primary};
+  background: ${props => props.color};
   height: 45px;
   border: 0;
   color: ${colors.white};
@@ -13,7 +13,7 @@ export const ButtonWrapper = styled.button`
   align-items: center;
 
   &:hover {
-    background: ${darken(0.03, colors.primary)};
+    background: ${props => darken(0.03, props.color)};
   }
 
   div {
