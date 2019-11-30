@@ -22,6 +22,7 @@ export const Content = styled.div`
   padding: 30px;
   background: ${colors.white};
   border-radius: 4px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
 `;
 
 export const Table = styled.table`
@@ -87,5 +88,16 @@ export const ActionButton = styled.button`
 
   &:first-child {
     margin-right: 20px;
+  }
+`;
+
+export const EmptyContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  strong {
+    text-transform: uppercase;
   }
 `;

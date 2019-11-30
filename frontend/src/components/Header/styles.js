@@ -12,6 +12,7 @@ export const Content = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
 
   nav {
     display: flex;

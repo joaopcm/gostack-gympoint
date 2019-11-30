@@ -16,6 +16,7 @@ import {
   TableFooter,
   TableFooterButton,
   ActionButton,
+  EmptyContainer,
 } from './styles';
 
 import api from '~/services/api';
@@ -139,6 +140,15 @@ export default function StudentsList() {
                   </td>
                 </tr>
               ))
+            )}
+            {!students.length && (
+              <tr>
+                <td colSpan="3">
+                  <EmptyContainer>
+                    <strong>Não há alunos para serem exibidos.</strong>
+                  </EmptyContainer>
+                </td>
+              </tr>
             )}
           </tbody>
         </Table>
