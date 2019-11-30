@@ -4,7 +4,8 @@ import { MdBackspace, MdSave } from 'react-icons/md';
 
 import Container from '~/components/Container';
 import Button from '~/components/Button';
-import { Content, Title } from './styles';
+import Content from '~/components/Content';
+import Title from '~/components/Title';
 
 export default function CreateStudent() {
   return (

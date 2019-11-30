@@ -8,9 +8,9 @@ import { Form } from '@rocketseat/unform';
 import Button from '~/components/Button';
 import TextInput from '~/components/TextInput';
 import Container from '~/components/Container';
+import Content from '~/components/Content';
+import Title from '~/components/Title';
 import {
-  Title,
-  Content,
   Table,
   LoadingLine,
   TableFooter,
@@ -63,6 +63,7 @@ export default function StudentsList() {
   }
 
   async function handleDeleteStudent(id) {
+    // TODO create a conditional to confirm or dont
     if (true) {
       try {
         await api.delete(`/students/${id}`);
