@@ -58,6 +58,7 @@ routes.delete(
 );
 
 routes.get('/plans', PlanController.index);
+routes.get('/plans/:id', PlanController.show);
 routes.post('/plans', PlanController.store);
 routes.put('/plans/:id', checkPlanMiddleware, PlanController.update);
 routes.delete('/plans/:id', checkPlanMiddleware, PlanController.delete);

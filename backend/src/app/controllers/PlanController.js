@@ -15,6 +15,14 @@ class PlanController {
     return res.set({ total_pages: Math.ceil(count / quantity) }).json(plans);
   }
 
+  async show(req, res) {
+    const { id } = req.params;
+
+    const plan = await Plan.findByPk(id);
+
+    res.json(plan);
+  }
+
   async store(req, res) {
     const schema = Yup.object().shape({
       title: Yup.string().required(),
