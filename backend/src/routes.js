@@ -64,6 +64,11 @@ routes.put('/plans/:id', checkPlanMiddleware, PlanController.update);
 routes.delete('/plans/:id', checkPlanMiddleware, PlanController.delete);
 
 routes.get('/enrollments', EnrollmentController.index);
+routes.get(
+  '/enrollments/:id',
+  checkEnrollmentMiddleware,
+  EnrollmentController.show
+);
 routes.post(
   '/enrollments',
   checkEnrollmentPlanMiddleware,

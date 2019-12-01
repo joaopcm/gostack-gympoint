@@ -33,6 +33,27 @@ class EnrollmentController {
       .json(enrollments);
   }
 
+  async show(req, res) {
+    const { id } = req.params;
+
+    const enrollment = await Enrollment.findByPk(id, {
+      include: [
+        {
+          model: Student,
+          as: 'student',
+          attributes: ['id', 'name', 'email'],
+        },
+        {
+          model: Plan,
+          as: 'plan',
+          attributes: ['id', 'title', 'duration', 'price'],
+        },
+      ],
+    });
+
+    return res.json(enrollment);
+  }
+
   async store(req, res) {
     const schema = Yup.object().shape({
       student_id: Yup.number().required(),
