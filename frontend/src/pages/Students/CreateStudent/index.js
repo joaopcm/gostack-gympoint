@@ -57,7 +57,7 @@ export default function CreateStudent() {
           />
           <DatePickerInput name="birth" label="DATA DE NASCIMENTO" />
           <TextInput name="weigth" label="PESO (em kg)" />
-          <TextInput name="height" label="ALTURA (em m)" />
+          <TextInput name="height" label="ALTURA" />
         </Content>
       </Container>
     </Form>
