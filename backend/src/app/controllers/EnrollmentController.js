@@ -25,6 +25,7 @@ class EnrollmentController {
           attributes: ['id', 'title', 'duration', 'price'],
         },
       ],
+      order: [['updated_at', 'desc']],
     });
 
     return res

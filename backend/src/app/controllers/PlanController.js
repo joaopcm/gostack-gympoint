@@ -9,7 +9,7 @@ class PlanController {
     const { rows: plans, count } = await Plan.findAndCountAll({
       limit: quantity,
       offset: (page - 1) * quantity,
-      order: ['price'],
+      order: [['price']],
     });
 
     return res.set({ total_pages: Math.ceil(count / quantity) }).json(plans);

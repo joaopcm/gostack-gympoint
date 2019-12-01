@@ -17,6 +17,7 @@ class StudentController {
           { email: { [Op.iLike]: `%${query}%` } },
         ],
       },
+      order: [['name']],
     });
 
     return res.set({ total_pages: Math.ceil(count / quantity) }).json(students);
