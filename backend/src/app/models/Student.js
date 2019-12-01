@@ -1,6 +1,8 @@
 import Sequelize, { Model } from 'sequelize';
 import { differenceInCalendarDays } from 'date-fns';
 
+import Enrollment from './Enrollment';
+
 class Student extends Model {
   static init(sequelize) {
     super.init(
@@ -19,6 +21,20 @@ class Student extends Model {
       },
       { sequelize }
     );
+
+    async function isActive(students) {
+      for (const student of students) {
+        const enrollment = await Enrollment.findOne({
+          where: { student_id: student.id },
+        });
+
+        student.setDataValue('active', !!enrollment);
+      }
+
+      return students;
+    }
+
+    this.addHook('afterFind', isActive);
 
     return this;
   }
