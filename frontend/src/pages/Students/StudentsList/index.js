@@ -5,6 +5,10 @@ import { toast } from 'react-toastify';
 import Shimmer from 'react-shimmer-effect';
 import { Form } from '@rocketseat/unform';
 
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
+
+import ConfirmAlert from '~/components/ConfirmAlert';
 import Button from '~/components/Button';
 import TextInput from '~/components/TextInput';
 import Container from '~/components/Container';
@@ -62,17 +66,36 @@ export default function StudentsList() {
     setSearch(data.search);
   }
 
-  async function handleDeleteStudent(id) {
+  async function handleDeleteStudent(student) {
     // TODO create a conditional to confirm or dont
-    if (true) {
-      try {
-        await api.delete(`/students/${id}`);
 
-        setStudents(students.filter(student => student.id !== id));
+    async function deleteStudent() {
+      try {
+        await api.delete(`/students/${student.id}`);
+
+        setStudents(
+          students.filter(currentStudent => currentStudent.id !== student.id)
+        );
       } catch (error) {
         toast.error('Não foi possível excluir este aluno.');
       }
     }
+
+    confirmAlert({
+      customUI: ({ onClose }) => (
+        <ConfirmAlert
+          callback={deleteStudent}
+          onClose={onClose}
+          title="Deseja excluir este aluno?"
+          message={
+            <p>
+              Se confirmar, o aluno <strong>{student.name}</strong> será
+              deletado. Isso é irreversível. Deseja mesmo excluí-lo?
+            </p>
+          }
+        />
+      ),
+    });
   }
 
   return (
@@ -134,7 +157,7 @@ export default function StudentsList() {
                     </Link>
                     <ActionButton
                       color="danger"
-                      onClick={() => handleDeleteStudent(student.id)}
+                      onClick={() => handleDeleteStudent(student)}
                     >
                       excluir
                     </ActionButton>
@@ -142,7 +165,7 @@ export default function StudentsList() {
                 </tr>
               ))
             )}
-            {!students.length && (
+            {!students.length && !loading && (
               <tr>
                 <td colSpan="3">
                   <EmptyContainer>

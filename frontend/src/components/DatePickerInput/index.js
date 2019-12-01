@@ -42,6 +42,7 @@ export default function DatePickerInput({ name, label }) {
           name={fieldName}
           selected={selected}
           onChange={date => setSelected(date)}
+          dateFormat="P"
           ref={ref}
         />
       </label>

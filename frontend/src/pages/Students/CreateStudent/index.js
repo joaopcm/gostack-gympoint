@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import { MdArrowBack, MdSave } from 'react-icons/md';
 
@@ -16,6 +17,9 @@ import { Content } from './styles';
 
 import colors from '~/styles/colors';
 
+import api from '~/services/api';
+import history from '~/services/history';
+
 export default function CreateStudent() {
   const schema = Yup.object().shape({
     name: Yup.string()
@@ -26,12 +30,26 @@ export default function CreateStudent() {
       .max(255, 'O e-mail pode ter no máximo 255 caracteres')
       .required('O e-mail é obrigatório'),
     birth: Yup.date().required('Data de nascimento é obrigatório'),
-    weigth: Yup.number().required('A altura é obrigatório'),
+    weight: Yup.number().required('A altura é obrigatório'),
     height: Yup.number().required('O peso é obrigatório'),
   });
 
+  async function handleSubmit(data) {
+    try {
+      const { name, email, birth, weight, height } = data;
+
+      await api.post('students', { name, email, birth, weight, height });
+
+      toast.success('Usuário cadastrado com sucesso.');
+
+      history.push('/students');
+    } catch (error) {
+      toast.error('Não foi possível cadastrar o aluno.');
+    }
+  }
+
   return (
-    <Form schema={schema}>
+    <Form schema={schema} onSubmit={handleSubmit}>
       <Container>
         <Title>
           <h1>Cadastrar aluno</h1>
@@ -56,7 +74,7 @@ export default function CreateStudent() {
             placeholder="exemplo@email.com"
           />
           <DatePickerInput name="birth" label="DATA DE NASCIMENTO" />
-          <TextInput name="weigth" label="PESO (em kg)" />
+          <TextInput name="weight" label="PESO (em kg)" />
           <TextInput name="height" label="ALTURA" />
         </Content>
       </Container>
