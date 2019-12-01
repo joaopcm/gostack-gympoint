@@ -16,12 +16,12 @@ import Content from '~/components/Content';
 import Title from '~/components/Title';
 import {
   Table,
-  LoadingLine,
   TableFooter,
   TableFooterButton,
   ActionButton,
-  EmptyContainer,
-} from './styles';
+} from '~/components/Table';
+import LoadingLine from '~/components/LoadingLine';
+import EmptyContainer from '~/components/EmptyContainer';
 
 import api from '~/services/api';
 
@@ -47,7 +47,7 @@ export default function StudentsList() {
         setStudents(response.data);
         setPageAmount(response.headers.total_pages);
       } catch (error) {
-        toast.error('Não foi possível carregar os alunos');
+        toast.error('Não foi possível carregar os alunos.');
       }
 
       setLoading(false);
@@ -73,6 +73,8 @@ export default function StudentsList() {
     async function deleteStudent() {
       try {
         await api.delete(`/students/${student.id}`);
+
+        toast.success('Aluno deletado com sucesso.');
 
         setStudents(
           students.filter(currentStudent => currentStudent.id !== student.id)

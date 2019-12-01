@@ -62,7 +62,7 @@ DatePickerInput.propTypes = {
   disabled: PropTypes.bool,
 };
 
-DatePickerInput.defautProps = {
+DatePickerInput.defaultProps = {
   label: '',
   disabled: false,
 };
