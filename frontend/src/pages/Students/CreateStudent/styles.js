@@ -1,14 +1,6 @@
 import styled from 'styled-components';
 
-import colors from '~/styles/colors';
-
-export const Content = styled.div`
-  margin-top: 20px;
-  padding: 30px;
-  background: ${colors.white};
-  border-radius: 4px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
-`;
+import ContentWrapper from '~/components/Content';
 
 export const Title = styled.div`
   display: flex;
@@ -22,5 +14,17 @@ export const Title = styled.div`
     button {
       margin-right: 16px;
     }
+  }
+`;
+
+export const Content = styled(ContentWrapper)`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 15px;
+  grid-row-gap: 20px;
+
+  div:nth-child(1),
+  div:nth-child(2) {
+    grid-column: 1 / 4;
   }
 `;

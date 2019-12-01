@@ -8,9 +8,11 @@ import * as Yup from 'yup';
 
 import Container from '~/components/Container';
 import Button from '~/components/Button';
-import Content from '~/components/Content';
 import Title from '~/components/Title';
 import TextInput from '~/components/TextInput';
+import DatePickerInput from '~/components/DatePickerInput';
+
+import { Content } from './styles';
 
 import colors from '~/styles/colors';
 
@@ -23,6 +25,9 @@ export default function CreateStudent() {
       .email('Insira um e-mail válido')
       .max(255, 'O e-mail pode ter no máximo 255 caracteres')
       .required('O e-mail é obrigatório'),
+    birth: Yup.date().required('Data de nascimento é obrigatório'),
+    weigth: Yup.number().required('A altura é obrigatório'),
+    height: Yup.number().required('O peso é obrigatório'),
   });
 
   return (
@@ -45,6 +50,14 @@ export default function CreateStudent() {
         </Title>
         <Content>
           <TextInput name="name" label="NOME COMPLETO" placeholder="John Doe" />
+          <TextInput
+            name="email"
+            label="ENDEREÇO DE E-MAIL"
+            placeholder="exemplo@email.com"
+          />
+          <DatePickerInput name="birth" label="DATA DE NASCIMENTO" />
+          <TextInput name="weigth" label="PESO (em kg)" />
+          <TextInput name="height" label="ALTURA (em m)" />
         </Content>
       </Container>
     </Form>

@@ -20,8 +20,8 @@ export default function TextInput({
 
 TextInput.propTypes = {
   name: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  placeholder: PropTypes.string.isRequired,
+  type: PropTypes.string,
+  placeholder: PropTypes.string,
   label: PropTypes.string,
   className: PropTypes.string,
 };
@@ -29,4 +29,6 @@ TextInput.propTypes = {
 TextInput.defaultProps = {
   label: null,
   className: '',
+  type: 'text',
+  placeholder: '',
 };
