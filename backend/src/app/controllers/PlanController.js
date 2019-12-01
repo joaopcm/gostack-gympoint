@@ -6,13 +6,13 @@ class PlanController {
   async index(req, res) {
     const { page = 1, quantity = 20 } = req.query;
 
-    const plans = await Plan.findAll({
+    const { rows: plans, count } = await Plan.findAndCountAll({
       limit: quantity,
       offset: (page - 1) * quantity,
       order: ['price'],
     });
 
-    return res.json(plans);
+    return res.set({ total_pages: Math.ceil(count / quantity) }).json(plans);
   }
 
   async store(req, res) {
