@@ -1,14 +1,18 @@
 import * as Yup from 'yup';
+import { Op } from 'sequelize';
 
 import Plan from '../models/Plan';
 
 class PlanController {
   async index(req, res) {
-    const { page = 1, quantity = 20 } = req.query;
+    const { page = 1, quantity = 20, q: query = '' } = req.query;
 
     const { rows: plans, count } = await Plan.findAndCountAll({
       limit: quantity,
       offset: (page - 1) * quantity,
+      where: {
+        [Op.or]: [{ title: { [Op.iLike]: `%${query}%` } }],
+      },
       order: [['price']],
     });
 
