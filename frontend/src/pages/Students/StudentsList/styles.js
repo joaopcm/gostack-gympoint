@@ -66,11 +66,17 @@ export const TableFooter = styled.div`
 `;
 
 export const TableFooterButton = styled.button`
-  background: ${colors.white};
-  border: 2px solid ${colors.grey};
-  color: ${colors.darkGrey};
+  background: ${props => (props.disabled ? colors.white : colors.primary)};
+  color: ${props => (props.disabled ? colors.darkGrey : colors.white)};
   padding: 10px 15px;
   border-radius: 4px;
+  border: 0;
+
+  ${props =>
+    props.disabled &&
+    css`
+      border: 2px solid ${colors.grey};
+    `}
 
   &:hover {
     ${props =>

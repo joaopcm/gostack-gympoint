@@ -27,6 +27,7 @@ import api from '~/services/api';
 
 export default function StudentsList() {
   const [loading, setLoading] = useState(false);
+  const [pageAmount, setPageAmount] = useState(1);
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState('');
   const [students, setStudents] = useState([]);
@@ -44,6 +45,7 @@ export default function StudentsList() {
         });
 
         setStudents(response.data);
+        setPageAmount(response.headers.total_pages);
       } catch (error) {
         toast.error('Não foi possível carregar os alunos');
       }
@@ -63,6 +65,7 @@ export default function StudentsList() {
   }
 
   function handleSearchSubmit(data) {
+    setPage(1);
     setSearch(data.search);
   }
 
@@ -80,7 +83,7 @@ export default function StudentsList() {
     }
 
     confirmAlert({
-      customUI: ({ onClose }) => (
+      customUI: ({ onClose }) => ( // eslint-disable-line
         <ConfirmAlert
           callback={deleteStudent}
           onClose={onClose}
@@ -186,7 +189,7 @@ export default function StudentsList() {
         <span>Página {page}</span>
         <TableFooterButton
           type="button"
-          disabled={students.length < 20}
+          disabled={page === Number(pageAmount)}
           onClick={() => incrementPage()}
         >
           Próximo

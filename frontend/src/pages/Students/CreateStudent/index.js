@@ -29,15 +29,19 @@ export default function CreateStudent({ match }) {
 
   const schema = Yup.object().shape({
     name: Yup.string()
-      .max(255, 'O nome pode ter no máximo 255 caracteres')
-      .required('O nome é obrigatório'),
+      .max(255, 'Nome pode ter no máximo 255 caracteres')
+      .required('Nome é obrigatório'),
     email: Yup.string()
       .email('Insira um e-mail válido')
-      .max(255, 'O e-mail pode ter no máximo 255 caracteres')
-      .required('O e-mail é obrigatório'),
+      .max(255, 'E-mail pode ter no máximo 255 caracteres')
+      .required('E-mail é obrigatório'),
     birth: Yup.date().required('Data de nascimento é obrigatório'),
-    weight: Yup.number().required('A altura é obrigatório'),
-    height: Yup.number().required('O peso é obrigatório'),
+    weight: Yup.number()
+      .typeError('Peso é obrigatório')
+      .required('Peso é obrigatório'),
+    height: Yup.number()
+      .typeError('Altura é obrigatória')
+      .required('Altura é obrigatória'),
   });
 
   useEffect(() => {
