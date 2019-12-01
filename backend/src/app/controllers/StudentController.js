@@ -28,10 +28,16 @@ class StudentController {
   async store(req, res) {
     const schema = Yup.object().shape({
       name: Yup.string().required(),
-      email: Yup.string().required(),
+      email: Yup.string()
+        .email()
+        .required(),
       birth: Yup.date().required(),
-      weight: Yup.number().required(),
-      height: Yup.number().required(),
+      weight: Yup.number()
+        .min(0)
+        .required(),
+      height: Yup.number()
+        .min(0)
+        .required(),
     });
 
     if (!(await schema.isValid(req.body))) {
