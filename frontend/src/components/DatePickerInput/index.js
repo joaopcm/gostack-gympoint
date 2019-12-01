@@ -12,10 +12,14 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 setDefaultLocale(pt);
 
-export default function DatePickerInput({ name, label }) {
+export default function DatePickerInput({ name, label, disabled }) {
   const ref = useRef(null);
   const { fieldName, registerField, defaultValue, error } = useField(name);
   const [selected, setSelected] = useState(defaultValue);
+
+  useEffect(() => {
+    setSelected(defaultValue);
+  }, [defaultValue]);
 
   useEffect(() => {
     registerField({
@@ -34,6 +38,7 @@ export default function DatePickerInput({ name, label }) {
         {label}
         <ReactDatePicker
           id={fieldName}
+          disabled={disabled}
           customInput={
             <MaskedInput
               mask={[/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]}
@@ -54,8 +59,10 @@ export default function DatePickerInput({ name, label }) {
 DatePickerInput.propTypes = {
   name: PropTypes.string.isRequired,
   label: PropTypes.string,
+  disabled: PropTypes.bool,
 };
 
 DatePickerInput.defautProps = {
   label: '',
+  disabled: false,
 };

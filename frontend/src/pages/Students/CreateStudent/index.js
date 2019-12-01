@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import PropTypes from 'prop-types';
+import { parseISO } from 'date-fns';
 
 import { MdArrowBack, MdSave } from 'react-icons/md';
 
@@ -20,7 +22,11 @@ import colors from '~/styles/colors';
 import api from '~/services/api';
 import history from '~/services/history';
 
-export default function CreateStudent() {
+export default function CreateStudent({ match }) {
+  const [loading, setLoading] = useState(false);
+  const [initialData, setInitialData] = useState();
+  const { id } = match.params;
+
   const schema = Yup.object().shape({
     name: Yup.string()
       .max(255, 'O nome pode ter no máximo 255 caracteres')
@@ -34,28 +40,67 @@ export default function CreateStudent() {
     height: Yup.number().required('O peso é obrigatório'),
   });
 
+  useEffect(() => {
+    async function loadStudent() {
+      try {
+        setLoading(true);
+
+        const response = await api.get(`/students/${id}`);
+
+        const { data } = response;
+
+        setInitialData({
+          ...data,
+          birth: parseISO(data.birth),
+        });
+      } catch (error) {
+        toast.error('Não foi possível carregar os dados do aluno.');
+      }
+
+      setLoading(false);
+    }
+
+    if (id) {
+      loadStudent();
+    }
+  }, [id]);
+
   async function handleSubmit(data) {
-    try {
-      const { name, email, birth, weight, height } = data;
+    if (id) {
+      try {
+        const { name, email, birth, weight, height } = data;
 
-      await api.post('students', { name, email, birth, weight, height });
+        await api.put(`students/${id}`, { name, email, birth, weight, height });
 
-      toast.success('Usuário cadastrado com sucesso.');
+        toast.success('Usuário editado com sucesso.');
 
-      history.push('/students');
-    } catch (error) {
-      toast.error('Não foi possível cadastrar o aluno.');
+        history.push('/students');
+      } catch (error) {
+        toast.error('Não foi possível cadastrar o aluno.');
+      }
+    } else {
+      try {
+        const { name, email, birth, weight, height } = data;
+
+        await api.post('students', { name, email, birth, weight, height });
+
+        toast.success('Usuário cadastrado com sucesso.');
+
+        history.push('/students');
+      } catch (error) {
+        toast.error('Não foi possível cadastrar o aluno.');
+      }
     }
   }
 
   return (
-    <Form schema={schema} onSubmit={handleSubmit}>
+    <Form initialData={initialData} schema={schema} onSubmit={handleSubmit}>
       <Container>
         <Title>
-          <h1>Cadastrar aluno</h1>
+          <h1>{id ? 'Editar aluno' : 'Cadastrar aluno'}</h1>
 
           <div>
-            <Link to="/students/create">
+            <Link to="/students">
               <Button
                 icon={MdArrowBack}
                 type="button"
@@ -63,21 +108,62 @@ export default function CreateStudent() {
                 color={colors.darkGrey}
               />
             </Link>
-            <Button icon={MdSave} type="submit" text="CADASTRAR" />
+            <Button
+              icon={MdSave}
+              disabled={loading ? 1 : 0}
+              type="submit"
+              text={id ? 'EDITAR' : 'CADASTRAR'}
+            />
           </div>
         </Title>
         <Content>
-          <TextInput name="name" label="NOME COMPLETO" placeholder="John Doe" />
           <TextInput
+            disabled={loading ? 1 : 0}
+            name="name"
+            label="NOME COMPLETO"
+            placeholder="John Doe"
+          />
+          <TextInput
+            disabled={loading ? 1 : 0}
             name="email"
             label="ENDEREÇO DE E-MAIL"
             placeholder="exemplo@email.com"
           />
-          <DatePickerInput name="birth" label="DATA DE NASCIMENTO" />
-          <TextInput name="weight" label="PESO (em kg)" />
-          <TextInput name="height" label="ALTURA" />
+          <DatePickerInput
+            name="birth"
+            label="DATA DE NASCIMENTO"
+            disabled={loading}
+          />
+          <TextInput
+            disabled={loading ? 1 : 0}
+            name="weight"
+            type="number"
+            label="PESO (em kg)"
+          />
+          <TextInput
+            disabled={loading ? 1 : 0}
+            name="height"
+            type="number"
+            label="ALTURA"
+          />
         </Content>
       </Container>
     </Form>
   );
 }
+
+CreateStudent.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }),
+};
+
+CreateStudent.defaultProps = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: null,
+    }),
+  }),
+};

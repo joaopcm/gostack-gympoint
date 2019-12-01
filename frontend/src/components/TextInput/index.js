@@ -10,10 +10,17 @@ export default function TextInput({
   placeholder,
   label,
   className,
+  ...rest
 }) {
   return (
     <TextInputWrapper className={className}>
-      <Input name={name} type={type} placeholder={placeholder} label={label} />
+      <Input
+        name={name}
+        type={type}
+        placeholder={placeholder}
+        label={label}
+        {...rest}
+      />
     </TextInputWrapper>
   );
 }

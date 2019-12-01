@@ -11,7 +11,7 @@ export default function ConfirmAlert({ callback, onClose, title, message }) {
   return (
     <Card>
       <h1>{title}</h1>
-      {message}
+      {typeof message === 'object' ? message : <p>{message}</p>}
       <div>
         <Button
           type="button"
@@ -37,7 +37,7 @@ ConfirmAlert.propTypes = {
   callback: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
   title: PropTypes.string,
-  message: PropTypes.element,
+  message: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
 };
 
 ConfirmAlert.defaultProps = {

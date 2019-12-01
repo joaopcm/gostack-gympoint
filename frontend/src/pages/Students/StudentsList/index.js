@@ -67,8 +67,6 @@ export default function StudentsList() {
   }
 
   async function handleDeleteStudent(student) {
-    // TODO create a conditional to confirm or dont
-
     async function deleteStudent() {
       try {
         await api.delete(`/students/${student.id}`);

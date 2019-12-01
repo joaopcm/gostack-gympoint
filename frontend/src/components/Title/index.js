@@ -4,6 +4,7 @@ const Title = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  text-transform: uppercase;
 
   div {
     display: flex;
