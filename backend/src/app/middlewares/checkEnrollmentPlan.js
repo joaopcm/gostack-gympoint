@@ -4,7 +4,7 @@ import Plan from '../models/Plan';
 
 export default async (req, res, next) => {
   const schema = Yup.object().shape({
-    plan_id: Yup.nubmer().required(),
+    plan_id: Yup.number().required(),
   });
 
   if (!(await schema.isValid(req.body))) {
