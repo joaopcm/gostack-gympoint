@@ -8,13 +8,18 @@ class StudentController {
   async index(req, res) {
     const { page = 1, quantity = 20, q: query } = req.query;
 
-    const students = await Student.findAll({
+    const { rows: students, count } = await Student.findAndCountAll({
       limit: quantity,
       offset: (page - 1) * quantity,
-      where: query ? { name: { [Op.substring]: query } } : null,
+      where: {
+        [Op.or]: [
+          { name: { [Op.iLike]: `%${query}%` } },
+          { email: { [Op.iLike]: `%${query}%` } },
+        ],
+      },
     });
 
-    return res.json(students);
+    return res.set({ total_pages: Math.ceil(count / quantity) }).json(students);
   }
 
   async show(req, res) {
