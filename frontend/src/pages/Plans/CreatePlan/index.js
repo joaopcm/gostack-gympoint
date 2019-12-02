@@ -49,10 +49,20 @@ export default function CreatePlan({ match }) {
     async function loadPlan() {
       try {
         setLoading(true);
+
         const response = await api.get(`plans/${id}`);
+
+        const { data } = response;
+
+        if (!data) throw new Error('Error to load plan data');
+
         setInitialData(response.data);
+        setComputedPrice(response.data.price);
+        setComputedDuration(response.data.duration);
       } catch (error) {
-        toast.error('Erro ao carregar dados do plano');
+        toast.error('Erro ao carregar dados do plano.');
+
+        history.push('/plans');
       } finally {
         setLoading(false);
       }
@@ -127,6 +137,7 @@ export default function CreatePlan({ match }) {
           />
           <CurrencyInput
             name="price"
+            disabled={loading ? 1 : 0}
             value={computedPrice}
             onChange={(masked, raw) => setComputedPrice(raw)}
             label="PREÇO TOTAL"

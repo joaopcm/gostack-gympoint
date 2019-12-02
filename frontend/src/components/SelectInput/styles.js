@@ -3,10 +3,6 @@ import styled from 'styled-components';
 import colors from '~/styles/colors';
 
 export const SelectInputWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-
   label {
     display: flex;
     flex-direction: column;
@@ -15,20 +11,17 @@ export const SelectInputWrapper = styled.div`
     color: ${colors.dark};
     font-size: 14px;
     line-height: 16px;
+    margin-bottom: 8px;
   }
 
-  div.react-datepicker-wrapper {
-    margin-top: 8px;
-    width: 100%;
-  }
-
-  input {
+  & > div > div:nth-child(1),
+  & > div > div:nth-child(2) {
     border: 2px solid ${colors.grey};
     border-radius: 4px;
-    height: 45px;
     padding: 0 15px;
     color: ${colors.dark};
     width: 100%;
+    height: 45px;
 
     &::placeholder {
       color: ${colors.grey};

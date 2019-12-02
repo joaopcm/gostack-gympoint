@@ -59,6 +59,8 @@ export default function CreateStudent({ match }) {
         });
       } catch (error) {
         toast.error('Não foi possível carregar os dados do aluno.');
+
+        history.push('/students');
       }
 
       setLoading(false);
@@ -143,12 +145,14 @@ export default function CreateStudent({ match }) {
             name="weight"
             type="number"
             label="PESO (em kg)"
+            step="0.01"
           />
           <TextInput
             disabled={loading ? 1 : 0}
             name="height"
             type="number"
             label="ALTURA"
+            step="0.01"
           />
         </Content>
       </Container>

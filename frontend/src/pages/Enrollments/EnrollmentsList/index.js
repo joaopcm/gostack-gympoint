@@ -79,7 +79,7 @@ export default function EnrollmentsList() {
   async function handleDeleteEnrollment(enrollment) {
     async function deleteEnrollment() {
       try {
-        await api.delete(`/enrollment/${enrollment.id}`);
+        await api.delete(`/enrollments/${enrollment.id}`);
 
         toast.success('Matrícula excluída com sucesso.');
 
