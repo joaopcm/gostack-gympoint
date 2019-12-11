@@ -224,6 +224,7 @@ export default function CreateEnrollment({ match }) {
             </Link>
             <Button
               type="submit"
+              disabled={loading}
               icon={MdSave}
               text={id ? 'EDITAR' : 'CADASTRAR'}
             />
@@ -233,6 +234,7 @@ export default function CreateEnrollment({ match }) {
         <Content>
           <SelectInput
             name="student_id"
+            isDisabled={loading}
             options={students}
             label="ALUNO"
             placeholder="Buscar aluno"
@@ -242,6 +244,7 @@ export default function CreateEnrollment({ match }) {
           />
           <SelectInput
             noOptionsMessage={() => 'Não há planos'}
+            isDisabled={loading}
             name="plan_id"
             options={plans}
             onChange={setSelectedPlan}
@@ -252,6 +255,7 @@ export default function CreateEnrollment({ match }) {
           />
           <DatePickerInput
             name="start_date"
+            disabled={loading}
             label="DATA DE INÍCIO"
             onChange={setSelectedStartDate}
             placeholder="Escolha a data"
