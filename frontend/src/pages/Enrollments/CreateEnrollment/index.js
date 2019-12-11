@@ -116,6 +116,10 @@ export default function CreateEnrollment({ match }) {
   }, []);
 
   useEffect(() => {
+    document.title = 'GymPoint - Matrículas';
+  }, []);
+
+  useEffect(() => {
     async function loadEnrollment() {
       try {
         setLoading(true);

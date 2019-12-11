@@ -56,6 +56,10 @@ export default function StudentsList() {
     loadStudents();
   }, [page, search]);
 
+  useEffect(() => {
+    document.title = 'GymPoint - Alunos';
+  }, []);
+
   function incrementPage() {
     setPage(page + 1);
   }

@@ -67,6 +67,10 @@ export default function PlansList() {
     loadPlans();
   }, [page]);
 
+  useEffect(() => {
+    document.title = 'GymPoint - Planos';
+  }, []);
+
   async function handleDeletePlan(plan) {
     async function deleteStudent() {
       try {

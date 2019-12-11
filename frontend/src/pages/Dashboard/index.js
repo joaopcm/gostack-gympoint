@@ -60,7 +60,7 @@ export default function Dashboard() {
   ]);
 
   useEffect(() => {
-    document.title = 'GymPoint - Dashboard';
+    document.title = 'GymPoint - Painel';
   }, []);
 
   useEffect(() => {
@@ -85,7 +85,7 @@ export default function Dashboard() {
 
   return (
     <Container>
-      <Title>Dashboard</Title>
+      <Title>DASHBOARD</Title>
       <Content>
         {cards.map(card =>
           loading ? (

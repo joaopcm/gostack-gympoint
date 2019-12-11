@@ -34,6 +34,10 @@ export default function EnrollmentsList() {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
+    document.title = 'GymPoint - Matrículas';
+  }, []);
+
+  useEffect(() => {
     async function loadEnrollments() {
       try {
         setLoading(true);

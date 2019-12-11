@@ -71,6 +71,10 @@ export default function CreateStudent({ match }) {
     }
   }, [id]);
 
+  useEffect(() => {
+    document.title = 'GymPoint - Alunos';
+  }, []);
+
   async function handleSubmit(data) {
     if (id) {
       try {

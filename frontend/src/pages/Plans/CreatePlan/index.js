@@ -73,6 +73,10 @@ export default function CreatePlan({ match }) {
     }
   }, [id]);
 
+  useEffect(() => {
+    document.title = 'GymPoint - Planos';
+  }, []);
+
   async function handleSubmit(data) {
     if (id) {
       try {

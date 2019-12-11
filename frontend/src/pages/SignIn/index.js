@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Form } from '@rocketseat/unform';
 import { MdSend } from 'react-icons/md';
@@ -21,6 +21,10 @@ const schema = Yup.object().shape({
 export default function SignIn() {
   const dispatch = useDispatch();
   const loading = useSelector(state => state.auth.loading);
+
+  useEffect(() => {
+    document.title = 'GymPoint - Entrar';
+  }, []);
 
   function handleSubmit({ email, password }) {
     dispatch(signInRequest(email, password));
