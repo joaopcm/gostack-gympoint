@@ -140,7 +140,7 @@ export default function CreatePlan({ match }) {
             disabled={loading ? 1 : 0}
             value={computedPrice}
             onChange={(masked, raw) => setComputedPrice(raw)}
-            label="PREÇO TOTAL"
+            label="PREÇO MENSAL"
           />
           <CurrencyInput
             disabled
