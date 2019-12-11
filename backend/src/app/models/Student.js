@@ -23,15 +23,19 @@ class Student extends Model {
     );
 
     async function isActive(students) {
-      if (students.includes) {
-        for (const student of students) {
-          const enrollment = await Enrollment.findOne({
-            where: { student_id: student.id },
-          });
+      if (students && students.length > 1) {
+        Promise.all(
+          students.map(student => {
+            const enrollment = Enrollment.findOne({
+              where: { student_id: student.id },
+            });
 
-          student.setDataValue('active', !!enrollment);
-        }
-      } else {
+            student.setDataValue('active', !!enrollment);
+
+            return student;
+          })
+        );
+      } else if (students) {
         const enrollment = await Enrollment.findOne({
           where: { student_id: students.id },
         });
