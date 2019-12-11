@@ -30,10 +30,6 @@ export const Card = styled.div`
     justify-content: flex-end;
   }
 
-  button {
-    height: 40px;
-  }
-
   button + button {
     margin-left: 10px;
   }

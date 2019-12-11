@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { MdCheck, MdClose } from 'react-icons/md';
 
 import { Card } from './styles';
 
@@ -16,13 +17,15 @@ export default function ConfirmAlert({ callback, onClose, title, message }) {
         <Button
           type="button"
           onClick={onClose}
-          text="Não"
+          icon={MdClose}
+          text="NÃO"
           color={colors.darkGrey}
         />
 
         <Button
           type="button"
-          text="Sim"
+          text="SIM"
+          icon={MdCheck}
           onClick={() => {
             callback();
             onClose();
