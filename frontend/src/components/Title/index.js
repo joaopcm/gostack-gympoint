@@ -10,6 +10,10 @@ const Title = styled.div`
     display: flex;
     align-items: center;
 
+    a + button {
+      margin-left: 16px;
+    }
+
     form {
       margin-left: 16px;
     }
