@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useMemo, useState } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select/async';
 
@@ -62,7 +62,6 @@ export default function SelectInput({
         defaultValue={test}
         value={test}
         onChange={value => {
-          console.log(ref.current);
           setTest(value);
           onChange(value);
         }}

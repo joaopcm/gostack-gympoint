@@ -54,6 +54,8 @@ export default function CreateEnrollment({ match }) {
 
   const loadStudents = useCallback(async inputValues => {
     try {
+      setLoading(true);
+
       const response = await api.get('students', {
         params: {
           q: inputValues,
@@ -68,14 +70,19 @@ export default function CreateEnrollment({ match }) {
         }));
 
       setStudents(data);
+
       return data;
-    } catch (error) {
-      toast.error('Erro ao carregar os alunos.');
+    } catch (_) {
+      return toast.error('Erro ao carregar os alunos.');
+    } finally {
+      setLoading(false);
     }
   }, []);
 
   const loadPlans = useCallback(async inputValues => {
     try {
+      setLoading(true);
+
       const response = await api.get('plans', {
         params: {
           q: inputValues,
@@ -101,8 +108,10 @@ export default function CreateEnrollment({ match }) {
 
       setPlans(data);
       return data;
-    } catch (error) {
-      toast.error('Erro ao carregar os planos.');
+    } catch (_) {
+      return toast.error('Erro ao carregar os planos.');
+    } finally {
+      setLoading(false);
     }
   }, []);
 
@@ -146,7 +155,7 @@ export default function CreateEnrollment({ match }) {
           student_id: enrollment.student.id,
           plan_id: enrollment.plan.id,
         });
-      } catch (error) {
+      } catch (_) {
         toast.error('Erro ao carregar dados da matrícula.');
 
         history.push('/enrollments');
@@ -165,6 +174,8 @@ export default function CreateEnrollment({ match }) {
   async function handleSubmit(data) {
     if (id) {
       try {
+        setLoading(true);
+
         const { student_id, plan_id, start_date } = data;
 
         await api.put(`enrollments/${id}`, { student_id, plan_id, start_date });
@@ -172,11 +183,15 @@ export default function CreateEnrollment({ match }) {
         toast.success('Matrícula editada com sucesso.');
 
         history.push('/enrollments');
-      } catch (error) {
+      } catch (_) {
         toast.error('Não foi possível realizar a matrícula.');
+      } finally {
+        setLoading(false);
       }
     } else {
       try {
+        setLoading(true);
+
         const { student_id, plan_id, start_date } = data;
 
         await api.post('enrollments', { student_id, plan_id, start_date });
@@ -184,8 +199,10 @@ export default function CreateEnrollment({ match }) {
         toast.success('Matrícula cadastrado com sucesso.');
 
         history.push('/enrollments');
-      } catch (error) {
+      } catch (_) {
         toast.error('Não foi possível cadastrar a matrícula.');
+      } finally {
+        setLoading(false);
       }
     }
   }

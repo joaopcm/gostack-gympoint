@@ -30,7 +30,11 @@ class Student extends Model {
               where: { student_id: student.id || students.getDataValue('id') },
             });
 
-            student.setDataValue('active', !!enrollment);
+            if (enrollment) {
+              student.setDataValue('active', true);
+            } else {
+              student.setDataValue('active', false);
+            }
 
             return student;
           })
@@ -40,7 +44,11 @@ class Student extends Model {
           where: { student_id: students.id },
         });
 
-        students.setDataValue('active', !!enrollment);
+        if (enrollment) {
+          students.setDataValue('active', true);
+        } else {
+          students.setDataValue('active', false);
+        }
       }
 
       return students;
