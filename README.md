@@ -67,7 +67,7 @@ $> yarn start
 
 ## Built With
 
-* [Express](http://www.dropwizard.io/1.0.2/docs/) - The restful API framework
+* [Express](http://www.dropwizard.io/1.0.2/docs/) - A restful API framework
 * [ReactJS](https://pt-br.reactjs.org/) - A front-end library to build user interfaces
 * [React Native](https://facebook.github.io/react-native/) - A mobile library to build native apps to Android and iOS
 
@@ -78,8 +78,9 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 ## Authors
 
 * **João Melo** - *Full-stack developer* - [GitHub profile](https://github.com/jopcmelo)
+* **Raphael Oliveira** - *Full-stack developer* - [GitHub profile](https://github.com/RaphaelOliveiraMoura)
 
-See also the list of [contributors](https://github.com/jopcmelo/gostack-gobarber/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/jopcmelo/gostack-gympoint/contributors) who participated in this project.
 
 ## License
 
