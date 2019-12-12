@@ -1,14 +1,19 @@
 import styled from 'styled-components';
 
+import ContentWrapper from '~/components/Content';
+
 import colors from '~/styles/colors';
 
 export const Title = styled.h1`
   margin-bottom: 20px;
 `;
 
-export const Content = styled.div`
+export const Content = styled(ContentWrapper)`
+  background: transparent;
+  box-shadow: none;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  padding: 0;
   grid-gap: 15px;
 `;
 
@@ -51,12 +56,12 @@ export const Card = styled.div`
 
   div.value {
     display: flex;
-    width: 100%;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     flex-direction: column;
 
     h1 {
+      align-self: flex-end;
       color: ${colors.primary};
     }
   }

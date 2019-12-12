@@ -7,8 +7,8 @@ import Shimmer from 'react-shimmer-effect';
 import api from '~/services/api';
 
 import Container from '~/components/Container';
+import Title from '~/components/Title';
 import {
-  Title,
   Content,
   Card,
   LoadingContainer,
@@ -85,7 +85,9 @@ export default function Dashboard() {
 
   return (
     <Container>
-      <Title>DASHBOARD</Title>
+      <Title>
+        <h1>DASHBOARD</h1>
+      </Title>
       <Content>
         {cards.map(card =>
           loading ? (
