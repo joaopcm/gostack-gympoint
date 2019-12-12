@@ -92,7 +92,7 @@ export default function EnrollmentsList() {
             currentEnrollment => currentEnrollment.id !== enrollment.id
           )
         );
-      } catch (error) {
+      } catch (_) {
         toast.error('Não foi possível excluir esta matrícula.');
       }
     }
