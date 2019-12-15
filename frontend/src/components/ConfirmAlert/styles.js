@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import colors from '~/styles/colors';
 
@@ -14,11 +14,12 @@ export const Card = styled.div`
 
   h1 {
     margin-bottom: 15px;
+    font-size: 18px;
   }
 
   p {
     font-size: 18px;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 
     strong {
       color: ${colors.dark};
@@ -30,7 +31,21 @@ export const Card = styled.div`
     justify-content: flex-end;
   }
 
+  button {
+    margin-top: 20px;
+
+    ${props =>
+      props.onlyConfirmButton &&
+      css`
+        width: 100%;
+      `}
+  }
+
   button + button {
-    margin-left: 10px;
+    ${props =>
+      !props.onlyConfirmButton &&
+      css`
+        margin-left: 10px;
+      `}
   }
 `;

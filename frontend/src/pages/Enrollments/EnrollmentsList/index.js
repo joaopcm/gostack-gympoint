@@ -220,7 +220,7 @@ export default function EnrollmentsList() {
         <span>Página {page}</span>
         <TableFooterButton
           type="button"
-          disabled={page === Number(pageAmount)}
+          disabled={page === Number(pageAmount) || Number(pageAmount) === 0}
           onClick={() => incrementPage()}
         >
           Próximo
