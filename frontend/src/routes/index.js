@@ -8,7 +8,7 @@ import Dashboard from '~/pages/Dashboard';
 import CreateEnrollment from '~/pages/Enrollments/CreateEnrollment';
 import EnrollmentsList from '~/pages/Enrollments/EnrollmentsList';
 
-import HelpOrdersList from '~/pages/HelpOrders/HelpOrdersList';
+import HelpOrdersList from '~/pages/HelpOrders';
 
 import CreatePlan from '~/pages/Plans/CreatePlan';
 import PlansList from '~/pages/Plans/PlansList';

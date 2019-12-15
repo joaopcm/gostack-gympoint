@@ -62,12 +62,10 @@ export default function CreateEnrollment({ match }) {
         },
       });
 
-      const data = response.data
-        .filter(student => !student.active)
-        .map(student => ({
-          id: student.id,
-          title: student.name,
-        }));
+      const data = response.data.map(student => ({
+        id: student.id,
+        title: student.name,
+      }));
 
       setStudents(data);
 

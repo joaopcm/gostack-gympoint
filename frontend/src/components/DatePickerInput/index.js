@@ -25,7 +25,7 @@ export default function DatePickerInput({
   const [selected, setSelected] = useState(defaultValue);
 
   useEffect(() => {
-    if (!value || value != 'Invalid Date') {
+    if (!value || value != 'Invalid Date') { // eslint-disable-line
       setSelected(value);
     }
   }, [value]);

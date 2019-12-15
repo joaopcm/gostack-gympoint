@@ -1,7 +1,6 @@
 import Sequelize, { Model } from 'sequelize';
-import { differenceInCalendarDays } from 'date-fns';
-
-import Enrollment from './Enrollment';
+import { formatDistanceStrict } from 'date-fns';
+import pt from 'date-fns/locale/pt';
 
 class Student extends Model {
   static init(sequelize) {
@@ -22,48 +21,13 @@ class Student extends Model {
       { sequelize }
     );
 
-    async function isActive(students) {
-      if (Array.isArray(students)) {
-        Promise.all(
-          students.map(student => {
-            const enrollment = Enrollment.findOne({
-              where: { student_id: student.id || students.getDataValue('id') },
-            });
-
-            if (enrollment) {
-              student.setDataValue('active', true);
-            } else {
-              student.setDataValue('active', false);
-            }
-
-            return student;
-          })
-        );
-      } else if (students) {
-        const enrollment = await Enrollment.findOne({
-          where: { student_id: students.id },
-        });
-
-        if (enrollment) {
-          students.setDataValue('active', true);
-        } else {
-          students.setDataValue('active', false);
-        }
-      }
-
-      return students;
-    }
-
-    this.addHook('afterFind', isActive);
-
     return this;
   }
 
   calculateAge() {
-    const age = Math.floor(
-      differenceInCalendarDays(new Date(), this.birth) / 365.25
-    );
-    return `${age} anos`;
+    return formatDistanceStrict(new Date(), this.birth, {
+      locale: pt,
+    });
   }
 }
 

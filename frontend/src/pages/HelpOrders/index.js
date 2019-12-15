@@ -68,7 +68,7 @@ export default function HelpOrdersList() {
           answer: data.answer,
         });
 
-        toast.success('Pedido de ajuda respondido com sucesso');
+        toast.success('Pedido de ajuda respondido com sucesso.');
 
         setHelpOrders(helpOrders.filter(item => item.id !== helpOrder.id));
 
@@ -92,6 +92,7 @@ export default function HelpOrdersList() {
               <Form onSubmit={data => answerHelpOrder(data, onClose)}>
                 <TextInput
                   name="answer"
+                  id="answer"
                   label="SUA RESPOSTA"
                   placeholder="Escreva sua resposta aqui"
                 />

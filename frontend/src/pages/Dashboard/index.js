@@ -88,6 +88,7 @@ export default function Dashboard() {
       <Title>
         <h1>DASHBOARD</h1>
       </Title>
+
       <Content>
         {cards.map(card =>
           loading ? (
