@@ -18,7 +18,8 @@ export const TextInputWrapper = styled.div`
     line-height: 16px;
   }
 
-  input {
+  input,
+  textarea {
     border: 2px solid ${colors.grey};
     border-radius: 4px;
     height: 45px;
@@ -33,6 +34,11 @@ export const TextInputWrapper = styled.div`
       font-size: 16px;
       line-height: 19px;
     }
+  }
+
+  textarea {
+    padding: 15px;
+    height: 150px;
   }
 
   span {

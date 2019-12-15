@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Input } from '@rocketseat/unform';
+import { Input, Textarea } from '@rocketseat/unform';
 
 import { TextInputWrapper } from './styles';
 
@@ -10,17 +10,30 @@ export default function TextInput({
   placeholder,
   label,
   className,
+  isTextArea,
   ...rest
 }) {
   return (
     <TextInputWrapper className={className}>
-      <Input
-        name={name}
-        type={type}
-        placeholder={placeholder}
-        label={label}
-        {...rest}
-      />
+      {!isTextArea ? (
+        <Input
+          name={name}
+          type={type}
+          placeholder={placeholder}
+          label={label}
+          {...rest}
+        />
+      ) : (
+        <Textarea
+          name={name}
+          multiline
+          rows="5"
+          type={type}
+          placeholder={placeholder}
+          label={label}
+          {...rest}
+        />
+      )}
     </TextInputWrapper>
   );
 }
@@ -31,6 +44,7 @@ TextInput.propTypes = {
   placeholder: PropTypes.string,
   label: PropTypes.string,
   className: PropTypes.string,
+  isTextArea: PropTypes.bool,
 };
 
 TextInput.defaultProps = {
@@ -38,4 +52,5 @@ TextInput.defaultProps = {
   className: '',
   type: 'text',
   placeholder: '',
+  isTextArea: false,
 };

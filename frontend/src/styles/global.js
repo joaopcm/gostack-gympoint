@@ -27,7 +27,7 @@ export default createGlobalStyle`
     background: ${colors.secondary};
   }
 
-  body, input, button {
+  body, input, button, textarea {
     font: 14px 'Roboto', sans-serif;
   }
 

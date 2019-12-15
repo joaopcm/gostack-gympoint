@@ -91,13 +91,14 @@ export default function HelpOrdersList() {
 
               <Form onSubmit={data => answerHelpOrder(data, onClose)}>
                 <TextInput
+                  isTextArea
                   name="answer"
                   id="answer"
                   label="SUA RESPOSTA"
                   placeholder="Escreva sua resposta aqui"
                 />
 
-                <Button type="submit" text="RESPONDER" icon={MdSend} />
+                <Button type="submit" text="RESPONDER ALUNO" icon={MdSend} />
               </Form>
             </>
           }
