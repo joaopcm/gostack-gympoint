@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import { confirmAlert } from 'react-confirm-alert';
-import { MdAdd } from 'react-icons/md';
+import { MdAdd, MdCheckCircle } from 'react-icons/md';
 import { format, parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
 import Shimmer from 'react-shimmer-effect';
+import colors from '~/styles/colors';
 
 import Container from '~/components/Container';
 import Content from '~/components/Content';
@@ -175,6 +176,13 @@ export default function EnrollmentsList() {
                   <td>{enrollment.plan.title}</td>
                   <td>{enrollment.start_date_formatted}</td>
                   <td>{enrollment.end_date_formatted}</td>
+                  <td>
+                    {enrollment.active ? (
+                      <MdCheckCircle color={colors.success} size={24} />
+                    ) : (
+                      <MdCheckCircle color={colors.grey} size={24} />
+                    )}
+                  </td>
                   <td>
                     <Link to={`/enrollments/${enrollment.id}`}>
                       <ActionButton color="info">editar</ActionButton>

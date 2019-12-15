@@ -8,4 +8,5 @@ export default {
   dark: '#444',
   black: '#000',
   darkGrey: '#999',
+  success: '#31DB7D',
 };

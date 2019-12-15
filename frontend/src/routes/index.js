@@ -8,7 +8,6 @@ import Dashboard from '~/pages/Dashboard';
 import CreateEnrollment from '~/pages/Enrollments/CreateEnrollment';
 import EnrollmentsList from '~/pages/Enrollments/EnrollmentsList';
 
-import AnswerHelpOrder from '~/pages/HelpOrders/AnswerHelpOrder';
 import HelpOrdersList from '~/pages/HelpOrders/HelpOrdersList';
 
 import CreatePlan from '~/pages/Plans/CreatePlan';
@@ -34,7 +33,6 @@ export default function Routes() {
       <Route path="/enrollments/:id" component={CreateEnrollment} isPrivate />
       <Route path="/enrollments" component={EnrollmentsList} isPrivate />
 
-      <Route path="/help-orders/:id" component={AnswerHelpOrder} isPrivate />
       <Route path="/help-orders" component={HelpOrdersList} isPrivate />
 
       <Route path="/plans/create" component={CreatePlan} isPrivate />
