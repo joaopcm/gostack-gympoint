@@ -7,7 +7,8 @@
     "dev": "nodemon src/server.js",
     "queue": "nodemon src/queue.js",
     "dev:debug": "nodemon --inspect src/server.js",
-    "build": "sucrase ./src -d ./dist --transforms imports"
+    "build": "sucrase ./src -d ./dist --transforms imports",
+    "start": "node dist/server.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
